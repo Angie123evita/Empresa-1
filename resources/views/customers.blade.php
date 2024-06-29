@@ -2,11 +2,10 @@
 
 @section('content')
 <h1>Pagina de Clientes</h1>
-<h3>Aqui puede visualizar nuestros clientes más frecuentes</h3>
 
-    @if($parameter)
-    <p>El parametro ingresado fue:{{$parameter}} </p>
+    @if($valido)
+    <p>La letra o palabra ingresado fue: {{$valido}} </p>
     @else
-    <p>Sin parametro</p>
+    <p>Sin Letra o palabra</p>
 @endif
 @stop
