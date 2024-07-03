@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactosController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PersonasController;
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -22,9 +23,13 @@ Route::get('/blog/{valido?}', function ($valido=null) {
     return view('blogs',['valido' => $valido]);
 })->where('valido', '[0-9]+')->name('blogs');
 
-Route::get('/contacts', function () {
-    return view('contacts');
-})->name('contactos');
+//nos retornara los clientes
+//Route::get('/servicios/{id}', [ServiciosController::class, 'show'])->name('servicios.show');
+Route::view('contactos','contactos')->name('contactos');
+//Route::get('/contactos', [ContactosController::class, 'index'])->name('contactos.index');
+//Route::get('/contactos/crear', [ContactosController::class, 'create'])->name('contactos.create');
+//Route::get('/contactos/{id}', [ContactosController::class, 'show'])->name('contactos.show');
+Route::post('/contactos', [ContactosController::class, 'store'])->name('contactos.store');
 
 //Route::get('/personas', [PersonasController::class, 'index'])->name('personas.index');
 Route::get('/personas/{id}', [PersonasController::class, 'show'])->name('personas.show');
